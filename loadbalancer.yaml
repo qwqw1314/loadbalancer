@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: loadbalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: loadbalancer 
+spec:
+  type: LoadBalancer
+  selector:
+    app: foo
+  ports:
+    - port: 80
+      targetPort: 5678
